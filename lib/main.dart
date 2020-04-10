@@ -47,6 +47,22 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
       ),
       body: new Column(
         children: <Widget>[
+          SizedBox(
+            height: 50,
+          ),
+          FlatButton(
+              onPressed: () {
+                DatePicker.showTimePicker(context, showTitleActions: true,
+                    onChanged: (date) {
+                  print('change $date');
+                }, onConfirm: (date) {
+                  print('confirm $date');
+                }, currentTime: DateTime.now(), locale: LocaleType.en);
+              },
+              child: Text(
+                'show time picker',
+                style: TextStyle(color: Colors.blue),
+              )),
 //          Row(children: <Widget>[
 //            new Container(
 //              child: new Center(
