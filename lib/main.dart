@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -26,14 +27,14 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
   AnimationController _controller;
 
-  static const int kStartValue = 4;
+  var hours;
 
   @override
   void initState() {
     super.initState();
     _controller = new AnimationController(
       vsync: this,
-      duration: new Duration(hours: 10, minutes: 10, seconds: kStartValue),
+      duration: new Duration(hours: 0, minutes: 0, seconds: 10),
     );
   }
 
@@ -44,15 +45,21 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
         child: new Icon(Icons.play_arrow),
         onPressed: () => _controller.forward(from: 0.0),
       ),
-      body: new Container(
-        child: new Center(
-          child: new CountDown(
-            animation: new StepTween(
-              begin: kStartValue,
-              end: 0,
-            ).animate(_controller),
-          ),
-        ),
+      body: new Column(
+        children: <Widget>[
+//          Row(children: <Widget>[
+//            new Container(
+//              child: new Center(
+//                child: new CountDown(
+//                  animation: new StepTween(
+//                    begin: 5,
+//                    end: 0,
+//                  ).animate(_controller),
+//                ),
+//              ),
+//            ),
+//          ]),
+        ],
       ),
     );
   }
