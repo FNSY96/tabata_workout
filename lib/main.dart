@@ -57,9 +57,9 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
                 DatePicker.showTimePicker(context, showSecondsColumn: true,
                     onConfirm: (date) {
                   timeStorage = Time(date);
-                  setState(() {
-
-                  });
+//                  setState(() {
+//
+//                  });
                   }, currentTime: DateTime.utc(2020, 0), locale: LocaleType.en);
               },
               child: Text(

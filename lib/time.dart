@@ -1,5 +1,5 @@
 class Time {
-  int hours, minutes, seconds;
+  int hours, minutes, seconds = 5;
 
 //  Time({this.hours, this.minutes, this.seconds});
   Time(DateTime date) {
