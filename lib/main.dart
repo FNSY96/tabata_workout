@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
     super.initState();
     _controller = new AnimationController(
       vsync: this,
-      duration: new Duration(hours: 0, minutes: 0, seconds: 10),
+      duration: new Duration(hours: 0, minutes: 0, seconds: timeStorage.seconds),
     );
   }
 
@@ -55,30 +55,31 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
           FlatButton(
               onPressed: () {
                 DatePicker.showTimePicker(context, showSecondsColumn: true,
-                    onChanged: (date) {
-//                  print('change $date');
-                }, onConfirm: (date) {
-                  print('confirm $date');
-//                  print(DateFormat.Hms(date.toIso8601String()));
-//                  timeStorage()
-                }, currentTime: DateTime.utc(2020, 0), locale: LocaleType.en);
+                    onConfirm: (date) {
+                  timeStorage = Time(date);
+                  setState(() {
+
+                  });
+                  }, currentTime: DateTime.utc(2020, 0), locale: LocaleType.en);
               },
               child: Text(
-                'show time picker',
-                style: TextStyle(color: Colors.green),
+                'Cycle Time',
+                style: TextStyle(
+                  color: Colors.blueGrey,
+                ),
               )),
-//          Row(children: <Widget>[
-//            new Container(
-//              child: new Center(
-//                child: new CountDown(
-//                  animation: new StepTween(
-//                    begin: 5,
-//                    end: 0,
-//                  ).animate(_controller),
-//                ),
-//              ),
-//            ),
-//          ]),
+          Row(children: <Widget>[
+            new Container(
+              child: new Center(
+                child: new CountDown(
+                  animation: new StepTween(
+                    begin: timeStorage.seconds,
+                    end: 0,
+                  ).animate(_controller),
+                ),
+              ),
+            ),
+          ]),
         ],
       ),
     );
