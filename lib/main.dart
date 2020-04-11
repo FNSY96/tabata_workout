@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:tabataworkout/time.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -25,6 +26,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
+  Time timeStorage;
   AnimationController _controller;
 
   var hours;
@@ -52,16 +54,18 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
           ),
           FlatButton(
               onPressed: () {
-                DatePicker.showTimePicker(context, showTitleActions: true,
+                DatePicker.showTimePicker(context, showSecondsColumn: true,
                     onChanged: (date) {
-                  print('change $date');
+//                  print('change $date');
                 }, onConfirm: (date) {
                   print('confirm $date');
-                }, currentTime: DateTime.now(), locale: LocaleType.en);
+//                  print(DateFormat.Hms(date.toIso8601String()));
+//                  timeStorage()
+                }, currentTime: DateTime.utc(2020, 0), locale: LocaleType.en);
               },
               child: Text(
                 'show time picker',
-                style: TextStyle(color: Colors.blue),
+                style: TextStyle(color: Colors.green),
               )),
 //          Row(children: <Widget>[
 //            new Container(
